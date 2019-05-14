@@ -1,0 +1,93 @@
+@import 'sizer'
+@import 'colors'
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:400,700')
+
+$font: 'inconsolata'
+
+nav
+    font-family: $font
+    font-weight: 700
+    font-size: 20px
+    text-align: center
+
+ul
+    padding: 0
+    list-style: none
+
+li
+    padding: 10px 0px
+    background-color: $lightblue
+    border-bottom: 1px solid $white
+    
+.submenu li
+    border-bottom: none
+
+a
+    text-decoration: none
+    color: $white
+    
+.mobile-only 
+    display: block
+    @media screen and (min-width: 426px)
+        display: none
+
+#hamburger
+    display: inline-block
+    width: 18px
+    height: 18px 
+    background-image: url('../img/Hamburger.png')
+    background-size: cover
+
+@include sizer(mobile)
+    ul.closed
+        li
+            display: none
+        li.mobile-only
+            display: block
+    
+@include sizer(tablet)
+    .flex-container
+        display: flex
+        position: relative
+    .item1, .item2, .item3
+        flex-grow: 1
+    .flex-item
+        flex-grow: 1
+    ul li:hover
+        background: $darkblue
+    .submenu
+        border-left: 1px solid $white
+        border-right: 1px solid $white
+    .drop-down
+        display: none
+        width: 100%
+    .submenu:hover .drop-down
+        position: absolute
+        top: 40px
+        left: 0
+        display: block
+
+@include sizer(desktop)
+    nav
+        text-align: left
+        background: $lightblue
+    li
+        border-bottom: none
+        padding: 10px
+    .item1, .item2, .item3
+        display: inline-block
+    ul li:hover
+        background: $darkblue
+    .submenu
+        position: relative
+        border-left: 1px solid $white
+        border-right: 1px solid $white
+    .drop-down
+        display: none
+    nav li:hover .drop-down
+        display: none
+        position: absolute
+        top: 40px
+        margin-left: -10px
+    .submenu:hover .drop-down
+        display: block
